@@ -3,10 +3,11 @@ provider "aws" {
   region  = var.region
 }
 
-resource "aws_instance" "gs-example1" {
+resource "aws_instance" "web-servers" {
+  count         = length(var.web-servers)
   ami           = var.ami-amazon-linux
   instance_type = var.instance-t2micro
   tags = {
-    Name = "gs-example1"
+    Name = element(var.web-servers, count.index)
   }
 }

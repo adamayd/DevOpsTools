@@ -9,3 +9,13 @@ variable "ami-amazon-linux" {
 variable "instance-t2micro" {
   default = "t2.micro"
 }
+
+variable "web-servers" {
+  type = list(string)
+  default = [
+    "ws-1",
+    "ws-2",
+    "ws-3",
+    "ws-4"
+  ]
+}
