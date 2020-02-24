@@ -1,12 +1,12 @@
 provider "aws" {
   profile = "default"
-  region  = "us-east-1"
+  region  = var.region
 }
 
-resource "aws_instance" "gs-example" {
-  ami           = "ami-0a887e401f7654935"
-  instance_type = "t2.micro"
+resource "aws_instance" "gs-example1" {
+  ami           = var.ami-amazon-linux
+  instance_type = var.instance-t2micro
   tags = {
-    Name = "change_my_instance"
+    Name = "gs-example1"
   }
 }
