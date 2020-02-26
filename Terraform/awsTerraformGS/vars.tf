@@ -2,8 +2,12 @@ variable "region" {
   default = "us-east-1"
 }
 
-variable "key_name" {
+variable "control_key_name" {
   default = "ansible_cloud"
+}
+
+variable "web_key_name" {
+  default = "ansible_web"
 }
 
 variable "ami-amazon-linux" {
