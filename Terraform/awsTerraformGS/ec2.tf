@@ -3,11 +3,21 @@ provider "aws" {
   region  = var.region
 }
 
-resource "aws_instance" "web-servers" {
+resource "aws_instance" "ansible-control" {
+  ami           = var.ami-amazon-linux
+  instance_type = var.instance-t2micro
+  tags = {
+    Name = "ansible-control"
+  }
+  key_name = var.key_name
+}
+
+resource "aws_instance" "ansible-web" {
   count         = length(var.web-servers)
   ami           = var.ami-amazon-linux
   instance_type = var.instance-t2micro
   tags = {
     Name = element(var.web-servers, count.index)
   }
+  key_name = var.key_name
 }
